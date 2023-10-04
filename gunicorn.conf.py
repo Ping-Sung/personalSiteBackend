@@ -9,6 +9,6 @@ timeout = 120  # 请求超时时间（以秒为单位）
 errorlog = os.path.join(os.path.dirname(BASE_DIR),
                         'logs/error.log')  # 错误日志文件的路径
 accesslog = os.path.join(os.path.dirname(
-    BASE_DIR), 'logs/error.log')  # 访问日志文件的路径
+    BASE_DIR), 'logs/access.log')  # 访问日志文件的路径
 
 print(errorlog)
