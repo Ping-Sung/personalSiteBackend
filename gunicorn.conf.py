@@ -11,4 +11,4 @@ errorlog = os.path.join(os.path.dirname(BASE_DIR),
 accesslog = os.path.join(os.path.dirname(
     BASE_DIR), 'logs/access.log')  # 访问日志文件的路径
 
-print(errorlog)
+# print(errorlog)

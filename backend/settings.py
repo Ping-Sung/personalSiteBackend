@@ -15,11 +15,11 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print(BASE_DIR)
+# print(BASE_DIR)
 
 # Actual directory user files go to
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
-print(MEDIA_ROOT)
+# print(MEDIA_ROOT)
 # URL used to access the media
 MEDIA_URL = '/media/'
 
