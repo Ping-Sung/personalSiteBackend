@@ -33,4 +33,6 @@ urlpatterns = [
     path('api/education/', include('education.urls')),
     # add all the urls from academic/urls.py after the localhost -> localhost:8000/api/academic/
     path('api/academic/', include('academic.urls')),
+    # add all the urls from cerule/urls.py after the localhost -> localhost:8000/api/cerule/
+    path('api/cerule/', include('cerule.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,3 +2,7 @@ django
 djangorestframework
 django-cors-headers
 gunicorn
+pillow
+python-docx
+celery
+redis
