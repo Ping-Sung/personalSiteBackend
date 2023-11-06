@@ -38,7 +38,16 @@ class ExperienceMixinApiView(
     def get(self, request, *args, **kwargs):
         if kwargs.get('pk'):
             return self.retrieve(request, *args, **kwargs)
-        return self.list(request, *args, **kwargs)
+        # order by start_date
+        queryset = self.filter_queryset(
+            self.get_queryset()).order_by('-start_date')
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            # return self.get_paginated_response(serializer.data)
+            return Response(serializer.data)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
 
     def post(self, request, *args, **kwargs):
         experience_serializer = self.get_serializer(data=request.data)
@@ -67,4 +76,12 @@ class ExperienceMixinApiView(
         return self.update(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
+        # delete the gallery instances and file first
+        experience_instance = self.get_object()
+        gallery_instances = gallery.objects.filter(
+            experience=experience_instance)
+        for gallery_instance in gallery_instances:
+            gallery_instance.image.delete()
+            gallery_instance.delete()
+
         return self.destroy(request, *args, **kwargs)

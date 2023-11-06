@@ -15,6 +15,8 @@ class Experience(models.Model):
     description = models.TextField()
     urls = models.URLField(max_length=200, default='')
     skills = models.CharField(max_length=300, default='')
+    categories = models.CharField(max_length=300, null=True, blank=True)
+    start_date = models.DateField(default='2023-01-01')
 
     def __str__(self):
         return self.title
